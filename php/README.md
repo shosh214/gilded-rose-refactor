@@ -1,148 +1,52 @@
-# GildedRose Kata - PHP Version
+Project Overview
+The Gilded Rose project is a refactoring exercise that simulates the management of items in an inventory. The main objective of the GildedRose class is to update the quality and sell-in value of different types of items in an inventory. The items behave differently depending on their name, and the quality and sell-in values are updated daily based on certain business rules.
 
-See the [top level readme](../README.md) for general information about this exercise. This is the PHP version of the
-GildedRose Kata.
+Key Features
+Regular Items: Decrease in quality by 1 each day until they reach zero.
+Aged Brie: Increases in quality as it ages.
+Sulfuras, Hand of Ragnaros: A legendary item that does not change in quality or sell-in value.
+Backstage Passes: Quality increases as the event date approaches, but drops to 0 after the event.
+Conjured Items: Quality decreases twice as fast as regular items.
+How to Run the Project
+Prerequisites
+PHP (version 7.4 or higher)
+Composer (for installing dependencies)
+Steps to Run
+Clone the Repository
 
-## Installation
+bash
+Copy code
+git clone https://github.com/shosh214/gilded-rose-refactor.git
+Navigate to the Project Directory
 
-The kata uses:
+bash
+Copy code
+cd gilded-rose-refactor
+Install Dependencies If you have a composer.json file and dependencies to install, run:
 
-- [8.0+](https://www.php.net/downloads.php)
-- [Composer](https://getcomposer.org)
-
-Recommended:
-
-- [Git](https://git-scm.com/downloads)
-
-See [GitHub cloning a repository](https://help.github.com/en/articles/cloning-a-repository) for details on how to
-create a local copy of this project on your computer.
-
-```sh
-git clone git@github.com:emilybache/GildedRose-Refactoring-Kata.git
-```
-
-or
-
-```shell script
-git clone https://github.com/emilybache/GildedRose-Refactoring-Kata.git
-```
-
-Install all the dependencies using composer
-
-```shell script
-cd ./GildedRose-Refactoring-Kata/php
+bash
+Copy code
 composer install
-```
+Run the Project Run the main PHP script to simulate the inventory updates for a given number of days:
 
-## Dependencies
+bash
+Copy code
+php run.php <number_of_days>
+Replace <number_of_days> with the number of days you want to simulate.
 
-The project uses composer to install:
+Example
+To run the simulation for 5 days, use:
 
-- [PHPUnit](https://phpunit.de/)
-- [ApprovalTests.PHP](https://github.com/approvals/ApprovalTests.php)
-- [PHPStan](https://github.com/phpstan/phpstan)
-- [Easy Coding Standard (ECS)](https://github.com/symplify/easy-coding-standard)
+bash
+Copy code
+php run.php 5
+Running Tests
+Prerequisites for Testing
+PHPUnit should be installed as a global tool or as a local project dependency.
+Run Unit Tests
+To execute the tests and verify the correct functioning of the code, run:
 
-## Folders
-
-- `src` - contains the two classes:
-    - `Item.php` - this class should not be changed
-    - `GildedRose.php` - this class needs to be refactored, and the new feature added
-- `tests` - contains the tests
-    - `GildedRoseTest.php` - starter test.
-        - Tip: ApprovalTests has been included as a dev dependency, see the PHP version of
-          the [Theatrical Players Refactoring Kata](https://github.com/emilybache/Theatrical-Players-Refactoring-Kata/)
-          for an example
-- `Fixture`
-    - `texttest_fixture.php` this could be used by an ApprovalTests, or run from the command line
-
-## Fixture
-
-To run the fixture from the php directory:
-
-```shell
-php .\fixtures\texttest_fixture.php 10
-```
-
-Change **10** to the required days.
-
-## Testing
-
-PHPUnit is configured for testing, a composer script has been provided. To run the unit tests, from the root of the PHP
-project run:
-
-```shell script
-composer tests
-```
-
-A Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias pu="composer tests"`), the same
-PHPUnit `composer tests` can be run:
-
-```shell script
-pu.bat
-```
-
-### Tests with Coverage Report
-
-To run all test and generate a html coverage report run:
-
-```shell script
-composer test-coverage
-```
-
-The test-coverage report will be created in /builds, it is best viewed by opening /builds/**index.html** in your
-browser.
-
-The [XDEbug](https://xdebug.org/download) extension is required for generating the coverage report.
-
-## Code Standard
-
-Easy Coding Standard (ECS) is configured for style and code standards, **PSR-12** is used. The current code is not upto
-standard!
-
-### Check Code
-
-To check code, but not fix errors:
-
-```shell script
-composer check-cs
-``` 
-
-On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias cc="composer check-cs"`), the same
-PHPUnit `composer check-cs` can be run:
-
-```shell script
-cc.bat
-```
-
-### Fix Code
-
-ECS provides may code fixes, automatically, if advised to run --fix, the following script can be run:
-
-```shell script
-composer fix-cs
-```
-
-On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias fc="composer fix-cs"`), the same
-PHPUnit `composer fix-cs` can be run:
-
-```shell script
-fc.bat
-```
-
-## Static Analysis
-
-PHPStan is used to run static analysis checks:
-
-```shell script
-composer phpstan
-```
-
-On Windows a batch file has been created, like an alias on Linux/Mac (e.g. `alias ps="composer phpstan"`), the same
-PHPUnit `composer phpstan` can be run:
-
-```shell script
-ps.bat
-```
-
-**Happy coding**!
+bash
+Copy code
+php vendor/bin/phpunit tests/
+This command runs all test cases in the tests directory
